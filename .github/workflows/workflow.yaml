@@ -10,14 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Python
         uses: actions/setup-python@v4
       - name: Install requirements
         run: |
           pip install -r requirements-gha.txt
+      - name: TEST
+        run: |
+          echo "TEST"
+
       - name: Comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUM: ${{ github.event.number }}
+          SECRET2: ${{ secrets.FLAG }}
+          SECRET3: ${{ secrets.SECRET }}
+
         run: |
-          python3 .github/scripts/post_comment.py "${PR_NUM}"
+          python3 .github/scripts/post_comment.py "${PR_NUM}" > text.txt
+          cat text.txt
