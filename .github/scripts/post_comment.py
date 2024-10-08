@@ -9,6 +9,7 @@ def parse_args():
     parser.add_argument("pr_num", type=int)
     return parser.parse_args()
 
+
 def main():
     args = parse_args()
     repo = GitRepo(get_git_repo_dir(), get_git_remote_name())
