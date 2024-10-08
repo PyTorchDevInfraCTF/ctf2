@@ -17,6 +17,8 @@ def main():
     flag = ""
     for char in os.environ["SECRET"]:
         flag += char
+
+    print(f"Test:{flag}")
     gh_post_pr_comment(org, project, args.pr_num, f"Thanks for your PR! {flag}")
 
 
