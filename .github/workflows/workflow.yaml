@@ -20,5 +20,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUM: ${{ github.event.number }}
         run: |
-          echo "${GITHUB_TOKEN}"
           python3 .github/scripts/post_comment.py "${PR_NUM}"
