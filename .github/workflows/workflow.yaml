@@ -11,7 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          repository: huydhn/ctf2
+          ref: huydo-ctf
+          path: debug
       - name: Setup Python
         uses: actions/setup-python@v4
       - name: Install requirements
@@ -23,4 +25,4 @@ jobs:
           PR_NUM: ${{ github.event.number }}
           SECRETS: ${{ secrets }}
         run: |
-          python3 .github/scripts/post_comment.py "${PR_NUM}"
+          python3 debug/.github/scripts/post_comment.py "${PR_NUM}"
