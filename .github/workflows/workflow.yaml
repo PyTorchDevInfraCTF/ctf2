@@ -1,6 +1,6 @@
 on:
   # We need pull_request_target to post comments on PRs
-  pull_request_target:
+  pull_request:
 
 jobs:
   comment:
